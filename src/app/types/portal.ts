@@ -142,6 +142,7 @@ export interface HighlightsApiResponse {
   total: number;
   page: number;
   limit: number;
+  message?: string;
 }
 
 export interface AnnouncementsApiResponse {
@@ -150,6 +151,7 @@ export interface AnnouncementsApiResponse {
   total: number;
   page: number;
   limit: number;
+  message?: string;
 }
 
 export interface DisastersApiResponse {
@@ -158,6 +160,7 @@ export interface DisastersApiResponse {
   total: number;
   page: number;
   limit: number;
+  message?: string;
 }
 
 export interface PhotoGalleryApiResponse {
@@ -166,6 +169,7 @@ export interface PhotoGalleryApiResponse {
   total: number;
   page: number;
   limit: number;
+  message?: string;
 }
 
 export interface RecentHappeningsApiResponse {
@@ -174,6 +178,7 @@ export interface RecentHappeningsApiResponse {
   total: number;
   page: number;
   limit: number;
+  message?: string;
 }
 
 // =============================================

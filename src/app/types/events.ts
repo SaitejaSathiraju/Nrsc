@@ -60,11 +60,13 @@ export interface EventsApiResponse {
   total: number;
   page: number;
   limit: number;
+  message?: string;
 }
 
 export interface EventApiResponse {
   success: boolean;
   data: UpcomingEvent;
+  message?: string;
 }
 
 // Filter and search types

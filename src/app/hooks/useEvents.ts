@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { UpcomingEvent, EventsApiResponse } from '../types/events';
+import { UpcomingEvent, EventsApiResponse, EventApiResponse } from '../types/events';
 
 interface UseEventsOptions {
   limit?: number;
@@ -83,7 +83,7 @@ export function useEvent(eventId: number) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
-      const data = await response.json();
+      const data: EventApiResponse = await response.json();
       
       if (data.success) {
         setEvent(data.data);
