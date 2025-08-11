@@ -187,76 +187,78 @@ export default function Resources() {
   const currentContent = sectionContent[activeSection as keyof typeof sectionContent] || sectionContent['river-basin-atlas'];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-white">
       <HeaderImage />
       <Navbar />
 
-      {/* Sidebar + Content side-by-side */}
-      <main className="flex flex-col md:flex-row py-8">
-        <ResourcesSidebar />
-        <ContentContainer>
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb currentSection={activeSection} />
-          
-          <h1 className="text-3xl font-bold mb-6 text-center md:text-left">
-            {currentContent.title}
-          </h1>
-          
-          {/* Description in white background */}
-          <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-            <p className="text-gray-700 leading-relaxed">
-              {currentContent.description}
-            </p>
-          </div>
-
-          {/* Dynamic Gallery */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 mb-8">
-            {currentContent.images.map((url, idx) => (
-              <img
-                key={idx}
-                src={url}
-                alt={`${currentContent.title} image ${idx + 1}`}
-                className="w-full h-48 object-cover rounded-md shadow-md"
-                loading="lazy"
-              />
-            ))}
-          </div>
-
-          {/* Links Section */}
-          {currentContent.links && currentContent.links.length > 0 && (
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4 text-gray-800">Related Links</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {currentContent.links.map((link, idx) => (
-                  <a
-                    key={idx}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors duration-200"
-                  >
-                    {link.type === 'pdf' ? (
-                      <svg className="w-8 h-8 text-red-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                      </svg>
-                    ) : (
-                      <svg className="w-8 h-8 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                      </svg>
-                    )}
-                    <div className="min-w-0 flex-1">
-                      <p className="font-medium text-gray-800 truncate">{link.name}</p>
-                      <p className="text-xs text-gray-500">
-                        {link.type === 'pdf' ? 'Click to download' : 'Click to visit'}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+      {/* Sidebar + Content side-by-side, with right-side time widget */}
+      <main className="py-8">
+        <div className="w-full max-w-7xl mx-auto px-4 flex flex-col lg:flex-row">
+          <ResourcesSidebar />
+          <ContentContainer showLeftContent={true} pageType="resources">
+            {/* Breadcrumb Navigation */}
+            <Breadcrumb currentSection={activeSection} />
+            
+            <h1 className="text-3xl font-bold mb-8 text-center">
+              {currentContent.title}
+            </h1>
+            
+            {/* Description in white background */}
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-8">
+              <p className="text-gray-700 leading-relaxed">
+                {currentContent.description}
+              </p>
             </div>
-          )}
-        </ContentContainer>
+
+            {/* Dynamic Gallery */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 mb-8">
+              {currentContent.images.map((url, idx) => (
+                <img
+                  key={idx}
+                  src={url}
+                  alt={`${currentContent.title} image ${idx + 1}`}
+                  className="w-full h-48 object-cover rounded-md shadow-md"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+
+            {/* Links Section */}
+            {currentContent.links && currentContent.links.length > 0 && (
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-4 text-gray-800">Related Links</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {currentContent.links.map((link, idx) => (
+                    <a
+                      key={idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors duration-200"
+                    >
+                      {link.type === 'pdf' ? (
+                        <svg className="w-8 h-8 text-red-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                        </svg>
+                      ) : (
+                        <svg className="w-8 h-8 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 0 0 0-2H5z" />
+                        </svg>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium text-gray-800 truncate">{link.name}</p>
+                        <p className="text-xs text-gray-500">
+                          {link.type === 'pdf' ? 'Click to download' : 'Click to visit'}
+                        </p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </ContentContainer>
+        </div>
       </main>
 
       {/* WebPortals below the main section, full width */}

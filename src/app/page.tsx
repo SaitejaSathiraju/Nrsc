@@ -28,6 +28,7 @@ export default function Home() {
       <Navbar />
       <PhotoCarousel />
       
+     
       {/* Upcoming Events Section - First */}
       <section className="py-6 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,6 +141,22 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      
+      <div className="bg-white from-orange-50 to-orange-100 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mandate</h2>
+            <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-8 border border-orange-200">
+            <p className="text-lg leading-relaxed text-gray-700 text-center">
+              National Remote Sensing Centre (NRSC) has the mandate for establishment of ground stations for receiving satellite data, generation of data products, dissemination to the users, development of techniques for remote sensing applications including disaster management support, geospatial services for good governance and capacity building for professionals, faculty and students.
+            </p>
+          </div>
+        </div>
+      </div>
+      
       
       {/* Services Grid - Second */}
       <ServicesGrid />
@@ -176,7 +193,7 @@ export default function Home() {
   <div className="max-w-3xl mx-auto p-6 text-center">
     <h3 className="text-3xl font-semibold text-gray-900 mb-6">NRSC Quality Policy</h3>
     <p className="text-orange-800 text-lg leading-relaxed tracking-wide">
-      “To excel in promoting enhanced utilization of remote sensing by delivering quality data products, developing value added services and implementing outreach programmes”
+      "To excel in promoting enhanced utilization of remote sensing by delivering quality data products, developing value added services and implementing outreach programmes"
     </p>
   </div>
 </div>

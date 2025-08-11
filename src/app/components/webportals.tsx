@@ -46,9 +46,9 @@ const portals: WebPortal[] = [
 
 const WebPortals: React.FC = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-semibold mb-8 text-center">Web Portals</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 justify-items-center">
+    <div className="w-full max-w-7xl mx-auto px-4 py-12">
+      <h2 className="text-3xl font-semibold mb-10 text-center text-gray-800">Web Portals</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-10 justify-items-center">
         {portals.map((portal) => (
           <a
             key={portal.name}
@@ -60,9 +60,9 @@ const WebPortals: React.FC = () => {
             <img
               src={portal.iconUrl}
               alt={portal.name}
-              className="w-16 h-16 object-contain mb-2"
+              className="w-24 h-24 object-contain mb-4"
             />
-            <span className="text-sm font-medium">{portal.name}</span>
+            <span className="text-base font-semibold text-gray-700">{portal.name}</span>
           </a>
         ))}
       </div>

@@ -11,22 +11,37 @@ import Footer from '../components/Footer';
 const Breadcrumb: React.FC = () => {
   return (
     <nav className="mb-6" aria-label="Breadcrumb">
-      <ol className="flex items-center space-x-2 text-sm text-gray-600">
-        <li>
-          <a 
-            href="/resources" 
-            className="hover:text-orange-600 transition-colors duration-200"
-          >
-            Resources
-          </a>
-        </li>
-        <li className="flex items-center">
-          <svg className="w-4 h-4 mx-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-          </svg>
-          <span className="text-gray-800 font-medium">Brochures</span>
-        </li>
-      </ol>
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-full px-4 py-2 shadow-sm">
+          <ol className="flex items-center justify-center text-sm text-orange-700">
+            <li>
+              <a
+                href="/resources"
+                className="font-medium hover:text-orange-600 transition-colors duration-200"
+              >
+                Resources
+              </a>
+            </li>
+            <li className="flex items-center px-2">
+              <svg
+                className="w-4 h-4 text-orange-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </li>
+            <li>
+              <span className="font-semibold text-orange-800">Brochures</span>
+            </li>
+          </ol>
+        </div>
+      </div>
     </nav>
   );
 };

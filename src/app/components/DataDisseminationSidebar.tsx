@@ -1,71 +1,27 @@
 import React, { useState } from 'react';
 
-type SidebarVariant = 'tech' | 'categories';
-
-interface DataProductsSidebarProps {
-  variant?: SidebarVariant;
-}
-
-const TECH_ITEMS = [
+const sidebarItems = [
   'Overview',
-  "Data Product DOI's",
-  'Optical',
-  'Microwave',
-  'Hyperspectral',
-  'Policy',
-  'Data Dissemination Portals',
-  'Users',
+  'Planning and Programming System',
+  'Information to users for Programming',
+  'Ordering & Dissemination',
   'Any Query?',
 ];
 
-const CATEGORY_ITEMS = [
-  'Indian Missions',
-  'Foreign Missions',
-  'Geo Physical',
-  'Thematic Maps',
-];
-
-const DataProductsSidebar: React.FC<DataProductsSidebarProps> = ({ variant = 'tech' }) => {
+const DataDisseminationSidebar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   const getHashFromItem = (item: string) => {
-    // Special cases to ensure exact hash matching
-    const techMap: { [key: string]: string } = {
-      Overview: 'overview',
-      "Data Product DOI's": 'data-product-dois',
-      Optical: 'optical',
-      Microwave: 'microwave',
-      Hyperspectral: 'hyperspectral',
-      Policy: 'policy',
-      'Data Dissemination Portals': 'data-dissemination-portals',
-      Users: 'users',
+    const hashMap: { [key: string]: string } = {
+      'Overview': 'overview',
+      'Planning and Programming System': 'planning-and-programming-system',
+      'Information to users for Programming': 'information-to-users-for-programming',
+      'Ordering & Dissemination': 'ordering-and-dissemination',
       'Any Query?': 'any-query',
     };
-
-    const categoryMap: { [key: string]: string } = {
-      'Indian Missions': 'indian-missions',
-      'Foreign Missions': 'foreign-missions',
-      'Geo Physical': 'geo-physical',
-      'Thematic Maps': 'thematic-maps',
-    };
-
-    const map = variant === 'categories' ? categoryMap : techMap;
-    return map[item] || item.replace(/\s+/g, '-').toLowerCase();
-  };
-
-  const getHref = (item: string) => {
-    if (variant === 'categories') {
-      const pathMap: { [key: string]: string } = {
-        'Indian Missions': '/indian-missions',
-        'Foreign Missions': '/foreign-missions',
-        'Geo Physical': '/geo-physical',
-        'Thematic Maps': '/thematic-maps',
-      };
-      return pathMap[item] || '#';
-    }
-    return `#${getHashFromItem(item)}`;
+    return hashMap[item] || item.replace(/\s+/g, '-').toLowerCase();
   };
 
   return (
@@ -91,10 +47,10 @@ const DataProductsSidebar: React.FC<DataProductsSidebarProps> = ({ variant = 'te
             <div className="w-16 h-1 bg-white mx-auto mt-2 rounded-full"></div>
           </div>
           <ul className="space-y-3">
-            {(variant === 'categories' ? CATEGORY_ITEMS : TECH_ITEMS).map((item, index) => (
+            {sidebarItems.map((item, index) => (
               <li key={index}>
-                 <a
-                  href={getHref(item)}
+                <a
+                  href={`#${getHashFromItem(item)}`}
                   className="flex justify-between items-center p-4 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 rounded-lg leading-relaxed transition-all duration-200 group border border-transparent hover:border-green-200 hover:shadow-md"
                 >
                   <span className="whitespace-normal font-medium text-gray-700 group-hover:text-green-700 transition-colors duration-200">{item}</span>
@@ -113,10 +69,10 @@ const DataProductsSidebar: React.FC<DataProductsSidebarProps> = ({ variant = 'te
               <div className="w-16 h-1 bg-white mx-auto mt-2 rounded-full"></div>
             </div>
             <ul className="space-y-2">
-              {(variant === 'categories' ? CATEGORY_ITEMS : TECH_ITEMS).map((item, index) => (
+              {sidebarItems.map((item, index) => (
                 <li key={index}>
                   <a
-                    href={getHref(item)}
+                    href={`#${getHashFromItem(item)}`}
                     className="flex justify-between items-center p-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 rounded-lg leading-relaxed transition-all duration-200 group border border-transparent hover:border-green-200"
                     onClick={toggleMobileMenu}
                   >
@@ -133,4 +89,7 @@ const DataProductsSidebar: React.FC<DataProductsSidebarProps> = ({ variant = 'te
   );
 };
 
-export default DataProductsSidebar;
+export default DataDisseminationSidebar;
+
+
+
